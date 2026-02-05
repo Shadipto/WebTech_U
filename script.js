@@ -5,6 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelector(".formClass")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-      console.log(thanks);
+      alert(thanks);
     });
 });

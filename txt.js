@@ -1,3 +1,3 @@
-let thanks = "Thank u for your donation!";
+let thanks = "Thank u for your donation! 👍🏻";
 
 export { thanks };
