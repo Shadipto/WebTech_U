@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <title>Prime Check</title>
+  </head>
+  <body>
+    <!-- ░░ Background decoration ░░ -->
+    <div class="bg-decoration">
+      <div class="bg-circle bg-circle--1"></div>
+      <div class="bg-circle bg-circle--2"></div>
+      <div class="bg-circle bg-circle--3"></div>
+    </div>
+
+    <!-- ░░ Page Wrapper ░░ -->
+    <div class="page-wrapper">
+      <!-- ══ HEADER ══ -->
+      <header class="site-header">
+        <div class="header-tag">Number Theory</div>
+        <h1 class="site-title">
+          <span class="title-line">Prime</span>
+          <span class="title-line title-line--accent">Checker</span>
+        </h1>
+        <p class="site-subtitle">
+          Discover whether any number is prime — instantly.
+        </p>
+      </header>
+
+      <!-- ══ MAIN CONTENT ══ -->
+      <main class="main-content">
+        <!-- ── Single Number Checker ── -->
+        <section class="card checker-card">
+          <div class="card-header">
+            <span class="card-icon">🔍</span>
+            <h2 class="card-title">Check a Number</h2>
+          </div>
+
+          <div class="input-group">
+            <input
+              type="number"
+              id="numInput"
+              class="number-input"
+              placeholder="Enter a number…"
+              min="1"
+              autofocus
+            />
+            <button class="btn btn--primary" id="checkBtn" onclick="runCheck()">
+              <span class="btn-label">Check</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
+
+          <!-- Result Display -->
+          <div class="result-container" id="resultContainer">
+            <div class="result-badge result-badge--idle" id="resultBadge">
+              ?
+            </div>
+            <div class="result-info">
+              <p class="result-headline" id="resultHeadline">Awaiting input…</p>
+              <p class="result-detail" id="resultDetail">
+                Type a number above and press Check.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Stats Strip ── -->
+        <div class="stats-strip">
+          <div class="stat-item">
+            <span class="stat-value">25</span>
+            <span class="stat-label">Primes ≤ 99</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">2</span>
+            <span class="stat-label">Smallest Prime</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">97</span>
+            <span class="stat-label">Largest ≤ 99</span>
+          </div>
+        </div>
+
+        <!-- ── Prime Grid ── -->
+        <section class="card grid-card">
+          <div class="card-header">
+            <span class="card-icon">⬡</span>
+            <h2 class="card-title">Primes up to 99</h2>
+            <span class="grid-legend">
+              <span class="legend-dot legend-dot--prime"></span> Prime
+              <span class="legend-dot legend-dot--composite"></span> Composite
+            </span>
+          </div>
+          <div class="number-grid" id="numberGrid"></div>
+        </section>
+
+        <!-- ── Console Log Preview ── -->
+        <section class="card console-card">
+          <div class="card-header">
+            <span class="card-icon">▸</span>
+            <h2 class="card-title">Console Output</h2>
+            <button class="btn btn--ghost btn--sm" onclick="clearLog()">
+              Clear
+            </button>
+          </div>
+          <div class="console-body" id="consoleBody"></div>
+        </section>
+      </main>
+
+      <!-- ══ FOOTER ══ -->
+      <footer class="site-footer">
+        <p>
+          A number <em>p</em> is prime if its only divisors are
+          <strong>1</strong> and <strong>p</strong> itself.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      /* ── Original logic preserved ── */
+      var num = 29;
+      var isPrime = true;
+      for (var i = 2; i < num; i++) {
+        if (num % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      if (isPrime) {
+        console.log(num + " is a prime number.");
+      } else {
+        console.log(num + " is not a prime number.");
+      }
+
+      for (var j = 1; j <= 99; j++) {
+        var primeCheck = true;
+        for (var k = 2; k < j; k++) {
+          if (j % k === 0) {
+            primeCheck = false;
+            break;
+          }
+        }
+        if (primeCheck && j > 1) {
+          console.log(j + " is a prime number.");
+        }
+      }
+
+      /* ── UI logic ── */
+      var logLines = [];
+
+      function isPrimeNum(n) {
+        if (n < 2) return false;
+        for (var d = 2; d <= Math.sqrt(n); d++) {
+          if (n % d === 0) return false;
+        }
+        return true;
+      }
+
+      function pushLog(text, type) {
+        logLines.unshift({ text: text, type: type || "info" });
+        if (logLines.length > 30) logLines.pop();
+        renderLog();
+      }
+
+      function renderLog() {
+        document.getElementById("consoleBody").innerHTML = logLines
+          .map(function (l) {
+            return (
+              '<div class="log-line log-line--' +
+              l.type +
+              '">' +
+              '<span class="log-prompt">›</span>' +
+              '<span class="log-text">' +
+              l.text +
+              "</span>" +
+              "</div>"
+            );
+          })
+          .join("");
+      }
+
+      function clearLog() {
+        logLines = [];
+        renderLog();
+      }
+
+      function runCheck() {
+        var val = parseInt(document.getElementById("numInput").value);
+        var badge = document.getElementById("resultBadge");
+        var headline = document.getElementById("resultHeadline");
+        var detail = document.getElementById("resultDetail");
+
+        if (isNaN(val) || val < 1) {
+          badge.textContent = "!";
+          badge.className = "result-badge result-badge--error";
+          headline.textContent = "Invalid input";
+          detail.textContent = "Please enter a positive whole number.";
+          return;
+        }
+
+        var prime = isPrimeNum(val);
+        badge.textContent = prime ? "✓" : "✗";
+        badge.className =
+          "result-badge " +
+          (prime ? "result-badge--prime" : "result-badge--composite");
+        headline.textContent = val + (prime ? " is prime!" : " is not prime.");
+        detail.textContent = prime
+          ? "Only divisible by 1 and " + val + "."
+          : "Has divisors other than 1 and " + val + ".";
+
+        pushLog(
+          val + (prime ? " is a prime number." : " is not a prime number."),
+          prime ? "prime" : "composite",
+        );
+
+        document.querySelectorAll(".grid-cell").forEach(function (c) {
+          c.classList.toggle(
+            "grid-cell--highlighted",
+            parseInt(c.dataset.n) === val,
+          );
+        });
+      }
+
+      function buildGrid() {
+        var grid = document.getElementById("numberGrid");
+        var frag = document.createDocumentFragment();
+        for (var n = 1; n <= 99; n++) {
+          var cell = document.createElement("div");
+          var prime = isPrimeNum(n);
+          cell.className =
+            "grid-cell " +
+            (prime ? "grid-cell--prime" : "grid-cell--composite");
+          cell.textContent = n;
+          cell.dataset.n = n;
+          (function (num) {
+            cell.addEventListener("click", function () {
+              document.getElementById("numInput").value = num;
+              runCheck();
+              document
+                .querySelector(".checker-card")
+                .scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+          })(n);
+          frag.appendChild(cell);
+        }
+        grid.appendChild(frag);
+      }
+
+      buildGrid();
+
+      // seed console with original output
+      [
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
+        71, 73, 79, 83, 89, 97,
+      ]
+        .reverse()
+        .forEach(function (p) {
+          pushLog(p + " is a prime number.", "prime");
+        });
+
+      document
+        .getElementById("numInput")
+        .addEventListener("keydown", function (e) {
+          if (e.key === "Enter") runCheck();
+        });
+    </script>
+  </body>
+</html>
