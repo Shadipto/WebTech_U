@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student List</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+
+    <div class="wrapper">
+      <header class="header">
+        <!-- Theme Toggle -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          title="Toggle light/dark mode"
+        >
+          <span class="toggle-icon">🌙</span>
+          <span class="toggle-label">Dark Mode</span>
+        </button>
+
+        <p class="eyebrow">📚 Classroom Manager</p>
+        <h1>Student List</h1>
+        <p class="subtitle">Add, track, and manage your students with ease</p>
+      </header>
+
+      <!-- ── Add Form ── -->
+      <div class="card form-card">
+        <form id="student-form">
+          <div class="input-row">
+            <div class="input-group">
+              <label for="student-roll">Roll No.</label>
+              <input
+                type="text"
+                id="student-roll"
+                placeholder="e.g. 101"
+                autocomplete="off"
+              />
+            </div>
+            <div class="input-group">
+              <label for="student-name">Student Name</label>
+              <input
+                type="text"
+                id="student-name"
+                placeholder="e.g. Rahim"
+                autocomplete="off"
+              />
+            </div>
+            <div class="input-group">
+              <label for="student-grade">Grade</label>
+              <input
+                type="text"
+                id="student-grade"
+                placeholder="e.g. A+"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <button type="submit" id="add-btn" disabled>
+            <span class="btn-icon">+</span>
+            <span>Add Student</span>
+          </button>
+          <p class="error-msg" id="error-msg"></p>
+        </form>
+      </div>
+
+      <!-- ── Stats Row ── -->
+      <div class="stats-row">
+        <div class="stat-chip">
+          <span class="stat-label">Total</span>
+          <span class="stat-value" id="count">0</span>
+        </div>
+        <div class="stat-chip present-chip">
+          <span class="stat-label">Present</span>
+          <span class="stat-value" id="present-count">0</span>
+        </div>
+        <div class="stat-chip absent-chip">
+          <span class="stat-label">Absent</span>
+          <span class="stat-value" id="absent-count">0</span>
+        </div>
+      </div>
+
+      <!-- ── Toolbar ── -->
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search students…"
+            autocomplete="off"
+          />
+        </div>
+        <div class="toolbar-btns">
+          <button id="sort-btn" class="tool-btn">Sort A–Z</button>
+          <button id="highlight-btn" class="tool-btn highlight-tool-btn">
+            ⭐ Top
+          </button>
+          <button id="clear-btn" class="tool-btn danger-btn">
+            🗑 Clear All
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Student List ── -->
+      <div class="card list-card">
+        <ul id="student-list">
+          <li class="empty-state" id="empty-state">
+            <span class="empty-icon">🎓</span>
+            <p>No students yet. Add one above!</p>
+          </li>
+        </ul>
+      </div>
+
+      <p class="total-footer" id="total-footer">Total students: 0</p>
+    </div>
+
+    <!-- ── Edit Modal ── -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal">
+        <h2 class="modal-title">Edit Student</h2>
+        <div class="input-group">
+          <label for="edit-roll">Roll No.</label>
+          <input type="text" id="edit-roll" placeholder="Roll No." />
+        </div>
+        <div class="input-group" style="margin-top: 12px">
+          <label for="edit-name">Name</label>
+          <input type="text" id="edit-name" placeholder="Student Name" />
+        </div>
+        <div class="input-group" style="margin-top: 12px">
+          <label for="edit-grade">Grade</label>
+          <input type="text" id="edit-grade" placeholder="Grade" />
+        </div>
+        <div class="modal-actions">
+          <button id="modal-cancel" class="tool-btn">Cancel</button>
+          <button id="modal-save" class="tool-btn save-btn">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
