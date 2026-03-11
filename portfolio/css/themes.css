@@ -1,0 +1,83 @@
+/* =========================================================
+   THEMES.CSS — Dark / Light mode CSS variable definitions
+   ========================================================= */
+
+/* ── DARK THEME (default) ── */
+[data-theme="dark"] {
+  --bg-primary:       #080810;
+  --bg-secondary:     #0e0e1a;
+  --bg-tertiary:      #141426;
+  --bg-card:          #10101e;
+  --bg-card-hover:    #16162a;
+
+  --text-primary:     #f0f0fa;
+  --text-secondary:   #a0a0c0;
+  --text-muted:       #5a5a80;
+  --text-inverse:     #080810;
+
+  --accent-primary:   #00e5c8;   /* electric cyan/teal */
+  --accent-secondary: #f0a030;   /* warm amber */
+  --accent-purple:    #8b5cf6;   /* soft violet */
+  --accent-glow:      rgba(0, 229, 200, 0.15);
+  --accent-glow-strong: rgba(0, 229, 200, 0.3);
+
+  --border-color:     rgba(255, 255, 255, 0.06);
+  --border-accent:    rgba(0, 229, 200, 0.3);
+
+  --shadow-sm:        0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md:        0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg:        0 20px 60px rgba(0, 0, 0, 0.6);
+  --shadow-glow:      0 0 40px rgba(0, 229, 200, 0.15);
+  --shadow-glow-btn:  0 0 24px rgba(0, 229, 200, 0.35);
+
+  --nav-bg:           rgba(8, 8, 16, 0.85);
+  --nav-border:       rgba(255, 255, 255, 0.05);
+
+  --gradient-hero:    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 229, 200, 0.12) 0%, transparent 60%);
+  --gradient-card:    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+  --gradient-text:    linear-gradient(135deg, #00e5c8 0%, #a78bfa 100%);
+  --gradient-accent:  linear-gradient(135deg, #00e5c8, #0096ff);
+
+  --noise-opacity:    0.035;
+  --grid-color:       rgba(255, 255, 255, 0.025);
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg-primary:       #fafaf7;
+  --bg-secondary:     #f3f3ee;
+  --bg-tertiary:      #ebebE4;
+  --bg-card:          #ffffff;
+  --bg-card-hover:    #f8f8f4;
+
+  --text-primary:     #111118;
+  --text-secondary:   #505068;
+  --text-muted:       #9898b0;
+  --text-inverse:     #fafaf7;
+
+  --accent-primary:   #007a6a;   /* darker teal for light bg */
+  --accent-secondary: #c07a10;
+  --accent-purple:    #6d28d9;
+  --accent-glow:      rgba(0, 122, 106, 0.08);
+  --accent-glow-strong: rgba(0, 122, 106, 0.2);
+
+  --border-color:     rgba(0, 0, 0, 0.08);
+  --border-accent:    rgba(0, 122, 106, 0.25);
+
+  --shadow-sm:        0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md:        0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-lg:        0 20px 60px rgba(0, 0, 0, 0.14);
+  --shadow-glow:      0 0 40px rgba(0, 122, 106, 0.1);
+  --shadow-glow-btn:  0 0 24px rgba(0, 122, 106, 0.25);
+
+  --nav-bg:           rgba(250, 250, 247, 0.9);
+  --nav-border:       rgba(0, 0, 0, 0.06);
+
+  --gradient-hero:    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 122, 106, 0.08) 0%, transparent 60%);
+  --gradient-card:    linear-gradient(135deg, rgba(0,0,0,0.01) 0%, rgba(0,0,0,0) 100%);
+  --gradient-text:    linear-gradient(135deg, #007a6a 0%, #6d28d9 100%);
+  --gradient-accent:  linear-gradient(135deg, #007a6a, #0060cc);
+
+  --noise-opacity:    0.02;
+  --grid-color:       rgba(0, 0, 0, 0.03);
+}
