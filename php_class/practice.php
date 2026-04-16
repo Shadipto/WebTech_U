@@ -1,6 +1,6 @@
 <?php
-// 1. Indexed array of student marks
-$marks = array(65, 42, 78, 90, 55);
+// array 
+$marks = array(55, 47, 78, 96, 55);
 
 // foreach
 echo "<h3>Student Marks:</h3>";
@@ -8,7 +8,7 @@ foreach ($marks as $m) {
     echo $m . "<br>";
 }
 
-// 2. Calculate total, average, max, min
+// total, average, max, min
 $total = 0;
 $max = $marks[0];
 $min = $marks[0];
@@ -70,7 +70,7 @@ echo "Failed Students: $fail <br>";
 // Associative array
 $student = array(
     "name" => "Dipto",
-    "id" => "12345",
+    "id" => "23-54051-3",
     "cgpa" => 3.94
 );
 
@@ -81,8 +81,8 @@ foreach ($student as $key => $value) {
 
 // String operations
 $name = $student["name"];
-$upperName = strtoupper($name); // convert to uppercase
-$nameLength = strlen($name);    // string length
+$upperName = strtoupper($name); 
+$nameLength = strlen($name);    
 
 echo "<h3>String Operations:</h3>";
 echo "Original Name: $name <br>";
