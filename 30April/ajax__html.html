@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Student Information System</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #result {
+        margin-top: 20px;
+      }
+      .student-card {
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 10px;
+      }
+      .student-card p {
+        margin: 5px 0;
+        font-size: 14px;
+      }
+      .error {
+        color: red;
+        background-color: #ffe6e6;
+        padding: 10px;
+        border: 1px solid #ff0000;
+        margin-top: 10px;
+      }
+      .loading {
+        color: #666;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Student Information System</h1>
+      <button onclick="loadData()">Load Student Data</button>
+      <div id="result"></div>
+    </div>
+
+    <script src="script_js.js"></script>
+  </body>
+</html>
